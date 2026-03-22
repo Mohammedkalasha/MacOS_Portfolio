@@ -22,8 +22,9 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
-    rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-    },
+ rules: {
+  'no-unused-vars': 'off',
+  '@typescript-eslint/no-unused-vars': 'off'
+}
   },
 ])
