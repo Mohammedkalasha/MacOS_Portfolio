@@ -40,7 +40,7 @@ const Dock = () => {
     };
 
     const resetIcons = () =>
-      icons.foreach((icon) =>
+      icons.forEach((icon) =>
         gsap.to(icon, {
           scale: 1,
           y: 0,
@@ -48,17 +48,14 @@ const Dock = () => {
           ease: "power1.out",
         }),
       );
-  dock.addEventListener('mousemove', handleMouseMove);
-  dock.addEventListener("mouselead", resetIcons)
+    dock.addEventListener("mousemove", handleMouseMove);
+    dock.addEventListener("mouseleave", resetIcons);
 
-  return () => {
-    dock.removeEventListener("mousemove", handleMouseMove);
-    dock.removeEventListener("mouseleave", resetIcons)
-
-  }
-
-  },[]);
-
+    return () => {
+      dock.removeEventListener("mousemove", handleMouseMove);
+      dock.removeEventListener("mouseleave", resetIcons);
+    };
+  }, []);
 
   const toggleApp = (app) => {};
 
