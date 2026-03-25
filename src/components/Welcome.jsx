@@ -30,6 +30,7 @@ const setupTextHover = (container, type) => {
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const handleMouseMove = (e) => {
+
     const { left: containerLeft } = container.getBoundingClientRect();
     const mouseX = e.clientX - containerLeft;
 
