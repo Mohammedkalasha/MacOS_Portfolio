@@ -7,18 +7,6 @@ const FONT_WEIGHTS = {
   title: { min: 400, max: 900, default: 400 }, // Fixed 'dafault' typo
 };
 
-// const renderText = (text, className, baseWeight = 400) => {
-//   return [...text].map((char, i) => (
-//     <span
-//       key={i}
-//       className={`${className} inline-block`} // inline-block ensures width is calculated correctly
-//       style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
-//     >
-//       {char === " " ? "\u00A0" : char}
-//     </span>
-//   ));
-// };
-
 const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
@@ -42,7 +30,7 @@ const setupTextHover = (container, type) => {
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const handleMouseMove = (e) => {
-    console.log("Mouse is moving over text!");
+
     const { left: containerLeft } = container.getBoundingClientRect();
     const mouseX = e.clientX - containerLeft;
 

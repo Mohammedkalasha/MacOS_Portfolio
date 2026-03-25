@@ -1,0 +1,13 @@
+diff --git a/node_modules/gsap/types/index.d.ts b/node_modules/gsap/types/index.d.ts
+index 6d81c2c..afe4722 100644
+--- a/node_modules/gsap/types/index.d.ts
++++ b/node_modules/gsap/types/index.d.ts
+@@ -12,7 +12,7 @@
+ /// <reference path="custom-wiggle.d.ts"/>
+ /// <reference path="css-plugin.d.ts"/>
+ /// <reference path="css-rule-plugin.d.ts"/>
+-/// <reference path="draggable.d.ts"/>
++/// <reference path="Draggable.d.ts"/>
+ /// <reference path="draw-svg-plugin.d.ts"/>
+ /// <reference path="ease.d.ts"/>
+ /// <reference path="easel-plugin.d.ts"/>
