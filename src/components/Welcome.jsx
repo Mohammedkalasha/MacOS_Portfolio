@@ -30,7 +30,6 @@ const setupTextHover = (container, type) => {
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const handleMouseMove = (e) => {
-    console.log("Mouse is moving over text!");
     const { left: containerLeft } = container.getBoundingClientRect();
     const mouseX = e.clientX - containerLeft;
 

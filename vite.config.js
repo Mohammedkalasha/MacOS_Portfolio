@@ -23,5 +23,7 @@ export default defineConfig({
         "src/windows",
       ),
     },
+
+     preserveSymlinks: true,
   },
 });
