@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Dock } from "#components";
+import { Navbar, Welcome, Dock, Home } from "#components";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import {
@@ -9,6 +9,8 @@ import {
   Text,
   Image,
   Contact,
+  Photos,
+  Trash
 } from "#windows";
 gsap.registerPlugin(Draggable);
 const App = () => {
@@ -25,6 +27,10 @@ const App = () => {
       <Text />
       <Image />
       <Contact />
+
+      <Home />
+      <Photos />
+      <Trash />
     </main>
   );
 };

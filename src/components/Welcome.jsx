@@ -30,7 +30,6 @@ const setupTextHover = (container, type) => {
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const handleMouseMove = (e) => {
-
     const { left: containerLeft } = container.getBoundingClientRect();
     const mouseX = e.clientX - containerLeft;
 
@@ -40,7 +39,7 @@ const setupTextHover = (container, type) => {
       const distance = Math.abs(mouseX - letterCenter);
 
       // Proximity logic: letters closer to mouse get higher weight
-      const intensity = Math.exp(-(distance ** 2) / 2000);
+      const intensity = Math.exp(-(distance ** 2) / 20000);
       // const targetWeight = min + (max - min) * intensity;
 
       const targetWeight = min + (max - min) * intensity;

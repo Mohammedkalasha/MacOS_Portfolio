@@ -2,11 +2,14 @@ import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 import gsap from "gsap";
 
-import { dockApps } from "#constants/index.js";
 import { useGSAP } from "@gsap/react";
 import useWindowStore from "#store/window.js";
+import { dockApps, locations } from "#constants/index.js";
+import useLocationStore from "#store/location.js";
 
 const Dock = () => {
+  const { setActiveLocation } = useLocationStore(); // ✅ add this
+
   const { openWindow, closeWindow, windows } = useWindowStore();
   const dockRef = useRef(null);
 
@@ -59,23 +62,70 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (app) => {
+  // const toggleApp = (app) => {
+  //   if (!app.canOpen) return;
+
+  //   const window = windows[app.id];
+
+  //   if (!window){
+  //     console.error(`Window not found for app: ${app.id}`);
+  //     return;
+  //   }
+
+  //   if (window.isOpen) {
+  //     closeWindow(app.id);
+  //   } else {
+  //     openWindow(app.id);
+  //   }
+
+  // };
+
+//   const toggleApp = (app) => {
+//   if (!app.canOpen) return;
+
+//   const win = windows[app.id];
+//   console.log("app.id:", app.id, "win:", win); // ← add this
+
+//   if (!win) {
+//     console.error(`Window not found for app: ${app.id}`);
+//     return;
+//   }
+
+//   if (win.isOpen) {
+//     closeWindow(app.id);
+//   } else {
+//     openWindow(app.id);
+//   }
+// };
+
+ const toggleApp = (app) => {
     if (!app.canOpen) return;
 
-    const window = windows[app.id];
+    const win = windows[app.id];
 
-    if (!window){
+    if (!win) {
       console.error(`Window not found for app: ${app.id}`);
       return;
     }
 
-    if (window.isOpen) {
+    // ✅ If trash, open Finder with trash location selected
+    if (app.id === "trash") {
+      setActiveLocation(locations.trash);
+      if (windows.finder.isOpen) {
+        closeWindow("finder");
+      } else {
+        openWindow("finder");
+      }
+      return;
+    }
+
+    if (win.isOpen) {
       closeWindow(app.id);
     } else {
       openWindow(app.id);
     }
-
   };
+
 
   return (
     <section id="dock">
@@ -89,7 +139,7 @@ const Dock = () => {
               data-tooltip-id="dock-tooltip"
               data-tooltip-content={name}
               data-tooltip-delay-show={150}
-              disabled={!canOpen}
+              // disabled={!canOpen}
               onClick={() => toggleApp({ id, canOpen })}
             >
               <img
